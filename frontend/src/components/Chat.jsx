@@ -10,6 +10,8 @@ const Chats = ({ message, self,seen}) => {
   
   const currentUser = useRecoilValue(UserAtom);
 
+
+  console.log(selectedConversation);
   
   return (
     <div className={`flex ${self ? "justify-end" : ""}`}>

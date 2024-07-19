@@ -5,7 +5,7 @@ import { v2 as cloudinary } from "cloudinary";
 
 const signupUser = async (req, res) => {
   try {
-    const { name, email, username, password } = req.body;
+    const { name, email, username, password,profilePic } = req.body;
     
     if (!name || !email || !username || !password) {
       return res.status(400).json({
@@ -30,6 +30,7 @@ const signupUser = async (req, res) => {
       email,
       username,
       password: hashPassword,
+      profilePic
     });
 
     await newUser.save();

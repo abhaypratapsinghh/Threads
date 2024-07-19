@@ -36,6 +36,7 @@ const PostPage = () => {
     setLoading(false);
   }, [pId]);
 
+
   return (
     <>
       {loading ? (

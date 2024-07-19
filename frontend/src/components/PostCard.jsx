@@ -22,7 +22,6 @@ const PostCard = ({ post, setPost, postPage, cInd }) => {
   const [currentPost, setCurrentPost] = useState(post);
   const [commentBox, setCommentBox] = useState(false);
   
-  const commentInd = useState(cInd);
   const [likeColor, setLikeColor] = useState(false);
   const [likeNum, setLikeNum] = useState(0);
 
@@ -62,8 +61,6 @@ const PostCard = ({ post, setPost, postPage, cInd }) => {
     }
   };
 
-  console.log(likeColor);
-
   const handleDelete = async () => {
     if (post) {
       if (!window.confirm("Are you sure you want to delete ?")) return;
@@ -100,6 +97,8 @@ const PostCard = ({ post, setPost, postPage, cInd }) => {
       }
     }
   };
+  
+
 
   return (
     <div>
@@ -177,7 +176,7 @@ const PostCard = ({ post, setPost, postPage, cInd }) => {
                   setCommentBox(!commentBox);
                 }}
               >
-                {commentInd && <BiMessageRounded size={32} />}
+                {cInd && <BiMessageRounded size={32} />}
               </button>
             </div>
             <div className="flex text-gray-700 text-sm gap-2 items-center font-mono text-center">

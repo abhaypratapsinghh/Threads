@@ -28,7 +28,6 @@ const SigninPage = () => {
       });
 
       if (response) {
-        console.log(response.data);
         localStorage.setItem("thread-user", JSON.stringify(response.data));
         setUser(response.data);
         showToast("Logged in successfully", "success");

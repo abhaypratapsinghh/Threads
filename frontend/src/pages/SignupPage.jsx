@@ -17,6 +17,7 @@ const SignupPage = () => {
     username: "",
     password: "",
     confirmPassword: "",
+    profilePic: "/img1.webp"
   });
 
   const [checkPassword, setCheckPassword] = useState(false);
