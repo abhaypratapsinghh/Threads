@@ -22,6 +22,7 @@ const UserHeader = () => {
   const [following, setFollowing] = useState(
     user.following.includes(profileData?._id));
   const [loading, setLoading] = useState(false);
+  const [followers, setFollowers] = useState(profileData?.followers.length);
 
   const showToast = useToastify();
 
@@ -37,12 +38,13 @@ const UserHeader = () => {
 
         if (res) {
           setProfileData(res.data.user[0]);
-          if (profileData?._id !== user?._id) {
-            setFollowing(user.following.includes(profileData?._id));
+          if (res.data.user[0]?._id !== user?._id) {
+            setFollowing(user.following.includes(res.data.user[0]?._id));
+            setFollowers(res.data.user[0]?.followers?.length);
           }
         }
       } catch (err) {
-        console.log(err);
+        showToast("Error getting profile", "error");
       }
     };
     getUser();
@@ -60,25 +62,12 @@ const UserHeader = () => {
 
       if (response) {
         if (following) {
-          showToast("Unfollowed","success");
-          setProfileData((prevData) => {
-            const updatedData = {
-              ...prevData,
-              followers: [...prevData.followers, user?._id],
-            }
-            return updatedData;
-          });
+          showToast("Unfollowed", "success");
+          setFollowers(followers - 1);
           setFollowing(false);
-        }
-        else {
-          showToast("Followed","success");
-          setProfileData((prevData) => {
-            const updatedData = {
-              ...prevData,
-              followers: prevData.followers.filter((follower) => (follower !== user._id))
-            }
-            return updatedData;
-          });
+        } else {
+          showToast("Followed", "success");
+          setFollowers(followers + 1);
           setFollowing(true);
         }
         localStorage.setItem(
@@ -136,7 +125,7 @@ const UserHeader = () => {
           <div className="flex flex-col lg:flex lg:flex-row items-center flex-wrap lg:justify-between ">
             <div className="my-3 flex gap-3 text-gray-600">
               <p className="text-lg font-mono">
-                {profileData.followers.length + " "}
+                {followers + " "}
                 <a className="font-serif">followers</a>
               </p>
               <p className="text-lg font-mono">
