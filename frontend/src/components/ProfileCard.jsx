@@ -64,7 +64,7 @@ const ProfileCard = (prop) => {
         <div className="mx-3 text-lg w-full flex justify-between">
           <div className="flex flex-col">
             <div className="flex gap-2 items-center">
-              <p>{user.username.substring(1)}</p>
+              <p>{user.username.charAt(0)==='@'?user.username.substring(1):user.username}</p>
               <MdVerified color="blue" />
             </div>
             <p className="text-gray-500">
