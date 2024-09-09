@@ -125,7 +125,7 @@ const UserHeader = () => {
           <div className="flex flex-col lg:flex lg:flex-row items-center flex-wrap lg:justify-between ">
             <div className="my-3 flex gap-3 text-gray-600">
               <p className="text-lg font-mono">
-                {followers + " "}
+                {followers ? followers : 0 + " "}
                 <a className="font-serif">followers</a>
               </p>
               <p className="text-lg font-mono">

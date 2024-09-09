@@ -112,7 +112,7 @@ const CreatePostPage = () => {
             </p>
             <div className={`flex justify-evenly flex-row flex-wrap gap-4`}>
               {imgUrl?.map((image, ind) => (
-                <div className="size-56 " key={ind}>
+                <div className="size-56" key={ind}>
                   <button
                     className="absolute text-red-800 "
                     onClick={(e) => handleRemoveImage(ind)}
